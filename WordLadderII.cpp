@@ -1,3 +1,5 @@
+// Trick 1: don't build graph. It's too slow. Use FindNeighbors()
+// Trick 2: remove word from wordList everytime pop from queue
 #include <iostream>
 #include <vector>
 #include <map>
@@ -71,6 +73,7 @@ class Solution {
         set<string> tmp;
         if (queues[current].empty()) break;
         for (const string& u : queues[current]) {
+          wordList.erase(u);
           int depth = depths[current][u] + 1;
           set<string> neighbors = FindNeighbors(wordList, u);
           for (const string& v : neighbors) {
@@ -89,7 +92,6 @@ class Solution {
         bool connected = false;
         int next = (current == START ? END : START);
         for (const string& w : tmp) {
-          cout << "in tmp: " << w << endl;
           if (queues[next].count(w) != 0) {
             connected = true;
             // make path from prevs[current][w] and prevs[current][w]
@@ -110,8 +112,7 @@ class Solution {
           }
           queues[current].insert(w);
         }
-        if (connected) break
-          break;
+        if (connected) break;
         current = next;
       }
       return result;
