@@ -6,10 +6,9 @@ using namespace std;
 
 class Solution {
 public:
-    bool canWinNim(int n) {
-        int r = (n-1) %4;
-        return r!=3;
-    }
+  bool canWinNim(int n) {
+    return n % 4 != 0;
+  }
 };
 
 int main() {
