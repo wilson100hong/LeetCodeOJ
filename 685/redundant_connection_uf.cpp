@@ -38,7 +38,7 @@ public:
     vector<int> cand_edges;
     for (int i=0;i<edges.size();++i) {
       auto& edge = edges[i];
-      // 2+ in edge
+      // 2+ indegree
       if (in_edge.count(edge[1])) {
         cand_edges.push_back(in_edge[edge[1]]);
         cand_edges.push_back(i);
