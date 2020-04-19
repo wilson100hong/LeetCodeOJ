@@ -9,13 +9,13 @@ class Solution {
       int n = nums.size();
       int i = 0;
       while (i < n) {
-        cout << "i: " << i << endl;
         if (nums[i] == i+1 || nums[nums[i]-1] == nums[i]) {
           i++;
           continue;
         }
         swap(nums[i], nums[nums[i]-1]);
       }
+
       vector<int> res;
       for (int i=0;i<n;++i) {
         if (nums[i] != i + 1) {
